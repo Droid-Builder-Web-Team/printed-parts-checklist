@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('version');
             $table->string('section');
             $table->string('front_image');
-            $table->string('side_image_fore')->nullable->default(NULL);
-            $table->string('side_image_back')->nullable->default(NULL);
+            $table->string('side_image_fore')->nullable;
+            $table->string('side_image_back')->nullable;
             $table->timestamps();
         });
     }

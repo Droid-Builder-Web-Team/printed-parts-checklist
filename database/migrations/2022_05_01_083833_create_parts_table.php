@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('parts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('droids_id');
-            $table->unsignedBigInteger('droid_user_pivot_id');
             $table->longText('droid_version');
             $table->longText('droid_section');
             $table->longText('sub_section')->nullable();
@@ -24,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('droids_id')->references('id')->on('droids');
-            $table->foreign('droid_user_pivot_id')->references('id')->on('droid_user_pivot');
         });
     }
 
