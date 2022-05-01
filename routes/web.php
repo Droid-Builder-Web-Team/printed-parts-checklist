@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 
 /*
@@ -25,7 +26,11 @@ Route::get('/dashboard', function () {
 
 // Admin Dashboard - Only users with the admin role can access these routes - RH
 Route::middleware('role:admin')->group(function () {
-    Route::get('/admin/dashboard', DashboardController::class)->name('admin-dashboard');
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', DashboardController::class)->name('admin-dashboard');
+        Route::get('/users', [AdminController::class, 'getUsersDataTable'])->name('admin-users');
+        Route::get('/droids', [AdminController::class, 'getDroidsDataTable'])->name('admin-droids');
+    });
 });
 
 require __DIR__ . '/auth.php';

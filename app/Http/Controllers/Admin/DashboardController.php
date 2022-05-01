@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\DataTables\UserDataTable;
+use App\DataTables\DroidDataTable;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -13,8 +15,10 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __invoke()
+    public function __invoke(UserDataTable $userDataTable, DroidDataTable $droidDataTable)
     {
-        return view('admin.dashboard');
+        return $userDataTable->render('admin.dashboard');
+
+        // return view('admin.dashboard');
     }
 }
