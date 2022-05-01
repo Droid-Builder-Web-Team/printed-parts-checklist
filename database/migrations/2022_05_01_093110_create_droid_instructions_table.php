@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            // This migration is no longer used as the user role is assigned in a separate table.
-            // $table->unsignedBigInteger('role_id');
+        Schema::create('droid_instructions', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('droid_id');
+            $table->string('title');
+            $table->string('url');
 
-            // $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('droid_id')->references('id')->on('droids');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('role_id');
-        });
+        Schema::dropIfExists('droid_instructions');
     }
 };
