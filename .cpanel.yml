@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/robsr2d2/public_html/printed-parts-checklist
+    - /bin/cp -R * $DEPLOYPATH
