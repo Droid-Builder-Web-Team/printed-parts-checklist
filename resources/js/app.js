@@ -21,3 +21,24 @@ $(".delete-confirm").on("click", function (event) {
         }
     });
 });
+
+// Drop Down Menu Triggers
+const dropdownButtonUsers = document.querySelectorAll(".dropdownButton-users");
+const dropdownMenuUsers = document.querySelectorAll(".dropdownMenu-users");
+
+$(dropdownButtonUsers).on("click", function () {
+    $(dropdownMenuUsers).fadeToggle("hidden");
+    console.log($(this).find("svg"));
+    $(this).find("svg").toggleClass("arrow-spin");
+});
+
+const dropdownButtonDroids = document.querySelectorAll(
+    ".dropdownButton-droids"
+);
+const dropdownMenuDroids = document.querySelectorAll(".dropdownMenu-droids");
+
+$(dropdownButtonDroids).on("click", function () {
+    $(dropdownMenuDroids).fadeToggle("hidden");
+    console.log($(this).find("svg"));
+    $(this).find("svg").toggleClass("arrow-spin");
+});

@@ -1,4 +1,5 @@
 const mix = require("laravel-mix");
+const tailwindcss = require("tailwindcss"); /* Add this line at the top */
 
 /*
  |--------------------------------------------------------------------------
@@ -11,10 +12,15 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.disableSuccessNotifications();
+mix.disableNotifications();
 
-mix.js("resources/js/app.js", "public/js").postCss(
-    "resources/css/app.css",
-    "public/css",
-    [require("postcss-import"), require("tailwindcss"), require("autoprefixer")]
-);
+mix.js("resources/js/app.js", "public/js")
+    .sass("resources/sass/app.scss", "public/css", [
+        require("postcss-import"),
+        require("tailwindcss"),
+        require("autoprefixer"),
+    ])
+    .options({
+        postCss: [tailwindcss("./tailwind.config.js")],
+    })
+    .version();
