@@ -8,6 +8,16 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-2">
       <div class="bg-white shadow-sm sm:rounded-lg">
+        <div class="p-2 flex justify-around bg-white order-b border-gray-200">
+          <a href="#">Logs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-2">
+      <div class="bg-white shadow-sm sm:rounded-lg">
         <div class="p-6 flex justify-around bg-white border-b border-gray-200">
           <div class="floating-box w-1/3 p-4 flex flex-col bg-gray-500 text-white text-center overflow-hidden shadow-lg sm:rounded-lg">
             <button data-dropdown-toggle="dropdown"
