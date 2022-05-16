@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Droid;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DroidsController extends Controller
 {
+    public function __invoke()
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,11 @@ class DroidsController extends Controller
      */
     public function index()
     {
-        //
+        $droidsList = Droid::paginate(9);
+
+        return view('mainframe', [
+            'droidsList' => $droidsList
+        ]);
     }
 
     /**

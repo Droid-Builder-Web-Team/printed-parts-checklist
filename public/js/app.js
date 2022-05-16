@@ -5080,7 +5080,37 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start(); // Confirm Delete Popup
+
+$(".delete-confirm").on("click", function (event) {
+  event.preventDefault();
+  var url = $(this).attr("href");
+  swal({
+    title: "Are you sure?",
+    text: "This record and it`s details will be permanantly deleted!",
+    icon: "warning",
+    buttons: ["Cancel", "Yes!"]
+  }).then(function (value) {
+    if (value) {
+      window.location.href = url;
+    }
+  });
+}); // Drop Down Menu Triggers
+
+var dropdownButtonUsers = document.querySelectorAll(".dropdownButton-users");
+var dropdownMenuUsers = document.querySelectorAll(".dropdownMenu-users");
+$(dropdownButtonUsers).on("click", function () {
+  $(dropdownMenuUsers).fadeToggle("hidden");
+  console.log($(this).find("svg"));
+  $(this).find("svg").toggleClass("arrow-spin");
+});
+var dropdownButtonDroids = document.querySelectorAll(".dropdownButton-droids");
+var dropdownMenuDroids = document.querySelectorAll(".dropdownMenu-droids");
+$(dropdownButtonDroids).on("click", function () {
+  $(dropdownMenuDroids).fadeToggle("hidden");
+  console.log($(this).find("svg"));
+  $(this).find("svg").toggleClass("arrow-spin");
+});
 
 /***/ }),
 
@@ -5098,7 +5128,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  */
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -22327,10 +22357,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22708,7 +22738,7 @@ process.umask = function() { return 0; };
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
