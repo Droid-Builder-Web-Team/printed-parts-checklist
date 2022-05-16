@@ -18,7 +18,5 @@ class DashboardController extends Controller
     public function __invoke(UserDataTable $userDataTable, DroidDataTable $droidDataTable)
     {
         return $userDataTable->render('admin.dashboard');
-
-        // return view('admin.dashboard');
     }
 }

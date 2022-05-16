@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DroidsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -31,6 +32,11 @@ Route::middleware('role:admin')->group(function () {
         Route::get('/users', [AdminController::class, 'getUsersDataTable'])->name('admin-users');
         Route::get('/droids', [AdminController::class, 'getDroidsDataTable'])->name('admin-droids');
     });
+});
+
+// Standard Logged In Routes - Users with verified accounts can access these pages - RH
+Route::middleware('role:user')->group(function () {
+    Route::get('/mainframe', [DroidsController::class, 'index'])->name('mainframe');
 });
 
 require __DIR__ . '/auth.php';
