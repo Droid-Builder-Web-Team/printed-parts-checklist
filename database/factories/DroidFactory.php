@@ -18,7 +18,9 @@ class DroidFactory extends Factory
     {
         return [
             'name' => $this->faker->bothify('?#-?#'),
+            'version' => $this->faker->randomElement(['MKI', 'MKII', 'MKIII']),
             'description' => $this->faker->sentence(),
+            // TODO Tags Faker
             'image' => $this->faker->imageUrl(640, 480, 'animals', true),
         ];
     }
