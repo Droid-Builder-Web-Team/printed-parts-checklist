@@ -23,9 +23,9 @@
             </a>
           </div>
 
-          <div class="extra-content">
-            <p class="text-sm text-dark-grey">Uploaded: {{ \Carbon\Carbon::createFromFormat('d-m-Y', $singleDroid->created_at) }}</p>
-            <p class="text-sm text-dark-grey">Last Update: {{ $singleDroid->updated_at }}</p>
+          <div class="extra-content pt-4">
+            <p class="text-sm text-dark-grey">Uploaded: {{ formatDateTime($singleDroid->created_at) }}</p>
+            <p class="text-sm text-dark-grey">Last Update: {{ formatDateTime($singleDroid->updated_at) }}</p>
           </div>
         </div>
         <div class="gradient flex justify-end content-center">
