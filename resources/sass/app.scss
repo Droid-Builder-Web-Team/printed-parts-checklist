@@ -19,3 +19,25 @@
         transform: rotateX(180deg);
     }
 }
+
+// Single Droid Page
+.droid-info-hero-section {
+    .gradient {
+        .image-wrapper {
+            max-width: 800px;
+        }
+    }
+
+    .button-wrapper {
+        // width: 100%;
+
+        a {
+            svg {
+                max-width: 30px;
+                max-height: 30px;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

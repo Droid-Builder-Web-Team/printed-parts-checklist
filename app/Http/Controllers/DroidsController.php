@@ -56,7 +56,11 @@ class DroidsController extends Controller
      */
     public function show($id)
     {
-        //
+        $singleDroid = Droid::where('id', $id)->first();
+
+        return view('droids.show', [
+            'singleDroid' => $singleDroid
+        ]);
     }
 
     /**
