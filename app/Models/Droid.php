@@ -17,7 +17,10 @@ class Droid extends Model
 
     protected $fillable = [
         'name',
+        'version',
+        'type',
         'description',
+        'tags',
         'image'
     ];
 
@@ -52,5 +55,10 @@ class Droid extends Model
     public function instructions()
     {
         return $this->hasMany(Instruction::class);
+    }
+
+    public function faqs()
+    {
+        return $this->hasMany(DroidFaq::class);
     }
 }

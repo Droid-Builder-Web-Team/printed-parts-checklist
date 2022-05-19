@@ -31,6 +31,10 @@ Route::middleware('role:admin')->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('admin-dashboard');
         Route::get('/users', [AdminController::class, 'getUsersDataTable'])->name('admin-users');
         Route::get('/droids', [AdminController::class, 'getDroidsDataTable'])->name('admin-droids');
+
+        Route::prefix('droids')->group(function () {
+            Route::get('/create', [DroidsController::class, 'create'])->name('admin-create-droid');
+        });
     });
 });
 

@@ -41,3 +41,48 @@
         }
     }
 }
+
+// Accordion
+.accordion-item {
+    background-color: #fff;
+    padding: 0 0 1.5rem;
+    position: relative;
+
+    .accordion-button {
+        padding: 1rem 1.5rem;
+        border: none;
+        position: relative;
+        background: #fff;
+        color: #000;
+        width: 100%;
+
+        h3 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0;
+
+            span {
+                transition: 0.3s ease-in-out;
+
+                svg {
+                    height: 1em;
+                }
+            }
+        }
+    }
+
+    .content {
+        border: 1px solid #fff;
+        height: 100%;
+        padding: 1rem 1.5rem;
+    }
+}
+
+// Tabs
+.tab-content {
+    &__tabs {
+        li {
+            margin-right: 1rem;
+        }
+    }
+}

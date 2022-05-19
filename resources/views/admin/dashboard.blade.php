@@ -52,6 +52,9 @@
                 <li>
                   <a href="{{ route('admin-droids') }}" class="block px-4 py-2 text-dark-grey hover:bg-gray-100">List</a>
                 </li>
+                <li>
+                  <a href="{{ route('admin-create-droid') }}" class="block px-4 py-2 text-dark-grey hover:bg-gray-100">Create</a>
+                </li>
               </ul>
             </div>
             <h1 class="text-5xl mt-4 mb-2">10</h1>

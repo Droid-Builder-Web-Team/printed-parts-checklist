@@ -42,3 +42,25 @@ $(dropdownButtonDroids).on("click", function () {
     console.log($(this).find("svg"));
     $(this).find("svg").toggleClass("arrow-spin");
 });
+
+// Accordion
+// Hide accordion content on load
+$(".accordion .accordion-item .content").hide();
+
+$("body").on("click", ".accordion .accordion-item .label", function () {
+    console.log("click");
+});
+
+// $(".accordion .container").length > 0 && ($(".accordion .container .content").hide(),
+//     $("body").on("click", ".accordion .container .label", function () {
+//         "true" == $(this).attr("aria-expanded") ? ($(this).attr("aria-expanded", "false"),
+//             $(this).siblings(".content").attr("aria-hidden", "true"),
+//             $(this).siblings(".content").slideUp())            : ($(".accordion .container").each(function (e, t) {
+//                   $(t).find(".label").attr("aria-expanded", "false"),
+//                       $(t).find(".content").attr("aria-hidden", "true"),
+//                       $(t).find(".content").slideUp();
+//               }),
+//               $(this).attr("aria-expanded", "true"),
+//               $(this).siblings(".content").attr("aria-hidden", "false"),
+//               $(this).siblings(".content").slideDown());
+//     }));
