@@ -5115,20 +5115,31 @@ $(dropdownButtonDroids).on("click", function () {
 
 $(".accordion .accordion-item .content").hide();
 $("body").on("click", ".accordion .accordion-item .label", function () {
-  console.log("click");
-}); // $(".accordion .container").length > 0 && ($(".accordion .container .content").hide(),
-//     $("body").on("click", ".accordion .container .label", function () {
-//         "true" == $(this).attr("aria-expanded") ? ($(this).attr("aria-expanded", "false"),
-//             $(this).siblings(".content").attr("aria-hidden", "true"),
-//             $(this).siblings(".content").slideUp())            : ($(".accordion .container").each(function (e, t) {
-//                   $(t).find(".label").attr("aria-expanded", "false"),
-//                       $(t).find(".content").attr("aria-hidden", "true"),
-//                       $(t).find(".content").slideUp();
-//               }),
-//               $(this).attr("aria-expanded", "true"),
-//               $(this).siblings(".content").attr("aria-hidden", "false"),
-//               $(this).siblings(".content").slideDown());
-//     }));
+  if ($(this).attr("aria-expanded") == "true") {
+    $(this).attr("aria-expanded", "false");
+    $(this).siblings(".content").attr("aria-hidden", "true");
+    $(this).siblings(".content").slideUp();
+  } else {
+    $(".accordion .accordion-item").each(function (i, el) {
+      $(el).find(".label").attr("aria-expanded", "false");
+      $(el).find(".content").attr("aria-hidden", "true");
+      $(el).find(".content").slideUp();
+    });
+    $(this).attr("aria-expanded", "true");
+    $(this).siblings(".content").attr("aria-hidden", "false");
+    $(this).siblings(".content").slideDown();
+  }
+}); // Tabs
+
+$(".tabs-wrapper .tab-content__tab-link").first().addClass("active");
+$(".tabs-wrapper .tab-content__tab-contents").first().attr("aria-hidden", "false").removeClass("hidden");
+$("body").on("click", ".tabs-wrapper .tab-content__tab-link", function () {
+  var activeContentAttr = $(this).data("tab");
+  $(".tabs-wrapper .tab-content__tab-link").removeClass("active");
+  $(".tabs-wrapper .tab-content__tab-contents").attr("aria-hidden", "true").removeClass("active").addClass("hidden");
+  $(this).addClass("active");
+  $(".tabs-wrapper .tab-content__tab-contents[data-tab='".concat(activeContentAttr, "']")).attr("aria-hidden", "false").removeClass("hidden");
+});
 
 /***/ }),
 

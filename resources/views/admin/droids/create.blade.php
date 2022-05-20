@@ -8,37 +8,41 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="p-6 bg-white border-b border-gray-200 tabs-wrapper">
           <form>
-            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-              <ul class="flex flex-wrap -mb-px text-sm font-medium text-center tab-content__tabs">
-                <li>
-                  <button
-                    class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Droid
-                    Information</button>
-                </li>
-                <li>
-                  <button
-                    class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Instructions</button>
-                </li>
-                <li>
-                  <button
-                    class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Bill
-                    Of Materials</button>
-                </li>
-                <li>
-                  <button
-                    class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Gallery</button>
-                </li>
-              </ul>
-            </div>
+            {{-- <div class="mb-4 border-b border-gray-200 dark:border-gray-700"> --}}
+            <ul class="flex flex-wrap mb-px text-sm font-medium text-center tab-content__tabs">
+              <li>
+                <button data-tab="1"
+                  type="button"
+                  class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Droid
+                  Information</button>
+              </li>
+              <li>
+                <button data-tab="2"
+                  type="button"
+                  class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Instructions</button>
+              </li>
+              <li>
+                <button data-tab="3"
+                  type="button"
+                  class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Bill
+                  Of Materials</button>
+              </li>
+              <li>
+                <button data-tab="4"
+                  type="button"
+                  class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">Gallery</button>
+              </li>
+            </ul>
+            {{-- </div> --}}
             <div class="tab-content__tab-items">
               {{-- Droid Details --}}
-              <div class="hidden p-4 bg-white rounded-lg dark:bg-gray-800 tab-content__tab_contents">
+              <div class="hidden p-4 bg-white rounded-lg dark:bg-gray-800 tab-content__tab-contents" data-tab="1" aria-hidden="true">
                 <div class="relative z-0 w-full mb-6 group">
                   <input type="text" name="name"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required />
+                    placeholder=" " />
                   <label for="name"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Droid
                     Name</label>
@@ -47,7 +51,7 @@
                 <div class="relative z-0 w-full mb-6 group">
                   <input type="text" name="version"
                     class="block mb-2 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required />
+                    placeholder=" " />
                   <p id="helper-text-explanation" class="text-xs text-gray-500 dark:text-gray-400">MKI, MKII, MKIII etc.</p>
                   <label for="version"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Droid
@@ -57,7 +61,7 @@
                 <div class="relative z-0 w-full mb-6 group">
                   <textarea rows="4" name="description"
                     class="block mb-2 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required></textarea>
+                    placeholder=" "></textarea>
                   <label for="description"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Droid
                     Droid Description</label>
@@ -90,7 +94,7 @@
               </div>
 
               {{-- Instructions --}}
-              <div class="hidden p-4 bg-white rounded-lg dark:bg-gray-800 tab-content__tab_contents">
+              <div class="hidden p-4 bg-white rounded-lg dark:bg-gray-800 tab-content__tab-contents" data-tab="2" aria-hidden="true">
                 <div class="relative z-0 w-full mb-6 group">
                   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="user_avatar">Upload Instructions</label>
                   <input
@@ -98,8 +102,9 @@
                     id="instructions" type="file">
                 </div>
               </div>
+
               {{-- Bill Of Materials --}}
-              <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800 tab-content__tab_contents">
+              <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800 tab-content__tab-contents" data-tab="3" aria-hidden="true">
                 <div class="relative z-0 w-full mb-6 group">
                   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="user_avatar">Upload Instructions</label>
                   <input
@@ -109,7 +114,7 @@
               </div>
 
               {{-- Image Gallery Upload --}}
-              <div class="p-4 bg-white rounded-lg dark:bg-gray-800 tab-content__tab_contents">
+              <div class="hidden p-4 bg-white rounded-lg dark:bg-gray-800 tab-content__tab-contents" data-tab="4" aria-hidden="true">
                 <!-- component -->
                 <!-- file upload modal -->
                 <article aria-label="File Upload Modal" class="relative h-full flex flex-col bg-white shadow-xl rounded-md" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"
