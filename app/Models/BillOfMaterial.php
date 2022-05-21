@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Droid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Instruction extends Model
+class BillOfMaterial extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    protected $table = 'droid_instructions';
+    protected $table = 'droid_bom';
 
     protected $fillable = [
         'droids_id',
@@ -20,8 +19,8 @@ class Instruction extends Model
         'url'
     ];
 
-    public function droids()
+    public function droid()
     {
-        return $this->belongsToMany(Droid::class);
+        return $this->belongsTo(Droid::class);
     }
 }

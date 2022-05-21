@@ -41,26 +41,24 @@
       <p class="text-sm text-dark-grey">There are a few things that you should know before you begin your build, check our FAQs to see if your questions have been answered.</p>
 
       <div class="accordion">
-        <div class="accordion-item">
-          <button type="button" class="accordion-button label" aria-expanded="false">
-            <h3>
-              Test Heading 1
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                  <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
-                  <path
-                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
-                </svg>
-              </span>
-            </h3>
-          </button>
-          <div class="content" aria-hidden="true">
-            <p class="text-normal text-dark-grey">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, recusandae? Dolor, ipsam. Id molestiae excepturi omnis, quibusdam,
-              dignissimos iste
-              corporis hic qui tempora quidem sunt
-              sed fugiat consequuntur.</p>
+        @foreach ($droidFaqs as $faq)
+          <div class="accordion-item my-5">
+            <button type="button" class="accordion-button label" aria-expanded="false">
+              <h3>
+                {{ $faq->title }}
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
+                  </svg>
+                </span>
+              </h3>
+            </button>
+            <div class="content" aria-hidden="true">
+              <p class="text-normal text-dark-grey">{{ $faq->content }}</p>
+            </div>
           </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

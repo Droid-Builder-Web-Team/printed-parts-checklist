@@ -5139,6 +5139,13 @@ $("body").on("click", ".tabs-wrapper .tab-content__tab-link", function () {
   $(".tabs-wrapper .tab-content__tab-contents").attr("aria-hidden", "true").removeClass("active").addClass("hidden");
   $(this).addClass("active");
   $(".tabs-wrapper .tab-content__tab-contents[data-tab='".concat(activeContentAttr, "']")).attr("aria-hidden", "false").removeClass("hidden");
+}); // FAQs Add New Button
+
+$("#newFaqButton").on("click", function (e) {
+  console.log("click");
+  e.preventDefault();
+  var templateRow = "\n    <div class=\"faq-block\">\n    <div class=\"relative z-0 w-full mb-6 group\">\n      <input type=\"text\" name=\"title\"\n        class=\"block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer\"\n        placeholder=\" \" />\n      <label for=\"title\"\n        class=\"peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6\">Title</label>\n    </div>\n\n    <div class=\"relative z-0 w-full mb-6 group\">\n      <textarea type=\"text\" name=\"content\"\n        class=\"block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer\"\n        placeholder=\" \"></textarea>\n      <label for=\"content\"\n        class=\"peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6\">Content</label>\n    </div>\n  </div>\n  ";
+  $(".tab-content__tab-contents").append(templateRow);
 });
 
 /***/ }),

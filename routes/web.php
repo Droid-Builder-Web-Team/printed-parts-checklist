@@ -34,6 +34,7 @@ Route::middleware('role:admin')->group(function () {
 
         Route::prefix('droids')->group(function () {
             Route::get('/create', [DroidsController::class, 'create'])->name('admin-create-droid');
+            Route::post('/store', [DroidsController::class, 'store'])->name('admin-store-droid');
         });
     });
 });
@@ -41,7 +42,7 @@ Route::middleware('role:admin')->group(function () {
 // Standard Logged In Routes - Users with verified accounts can access these pages - RH
 Route::middleware('role:user')->group(function () {
     Route::get('/mainframe', [DroidsController::class, 'index'])->name('mainframe');
-    Route::get('/droids/{id}', [DroidsController::class, 'show'])->name('droids-show');
+    Route::get('/droids/{droid}', [DroidsController::class, 'show'])->name('droids-show');
 });
 
 require __DIR__ . '/auth.php';

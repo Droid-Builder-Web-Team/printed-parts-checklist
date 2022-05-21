@@ -15,6 +15,8 @@ class Droid extends Model
 
     protected $guarded = [];
 
+    protected $table = 'droids';
+
     protected $fillable = [
         'name',
         'version',
@@ -60,5 +62,15 @@ class Droid extends Model
     public function faqs()
     {
         return $this->hasMany(DroidFaq::class);
+    }
+
+    public function billOfMaterials()
+    {
+        return $this->hasMany(BillOfMaterial::class);
+    }
+
+    public function droidGallery()
+    {
+        return $this->hasMany(DroidGallery::class);
     }
 }

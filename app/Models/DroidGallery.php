@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Droid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Instruction extends Model
+class DroidGallery extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    protected $table = 'droid_instructions';
+    protected $table = 'droid_gallery';
 
     protected $fillable = [
         'droids_id',

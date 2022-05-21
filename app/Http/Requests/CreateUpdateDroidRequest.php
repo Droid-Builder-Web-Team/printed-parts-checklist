@@ -17,22 +17,22 @@ class CreateUpdateDroidRequest extends FormRequest
         return Auth::check();
     }
 
-    /**
-     * Filters to be applied to the input.
-     *
-     * @return array
-     */
-    public function filters()
-    {
-        return [
-            'title' => 'trim|escape|capitalize',
-            'version' => 'trim|escape|capitalize',
-            'type' => 'required|string|trim|escape',
-            'description' => 'required|string|trim|escape',
-            'tags' => 'nullable|array|trim|escape',
-            'image' => 'required',
-        ];
-    }
+    // /**
+    //  * Filters to be applied to the input.
+    //  *
+    //  * @return array
+    //  */
+    // public function filters()
+    // {
+    //     return [
+    //         'title' => 'trim|escape|capitalize',
+    //         'version' => 'trim|escape|capitalize',
+    //         'type' => 'required|string|trim|escape',
+    //         'description' => 'required|string|trim|escape',
+    //         'tags' => 'nullable|array|trim|escape',
+    //         'image' => 'required',
+    //     ];
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -42,12 +42,27 @@ class CreateUpdateDroidRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            // Droid Details
+            'name' => 'required|string',
             'version' => 'required|string',
             'type' => 'required|string',
             'description' => 'required|string',
             'tags' => 'nullable|array',
-            'image' => 'required',
+            'image' => 'nullable',
+
+            // Instructions
+            'instructions_title' => 'required|string',
+            'instructions_file' => 'required',
+
+            // Bill Of Materials
+            'bill_of_materials_title' => 'required',
+            'bill_of_materials_file' => 'required',
+
+            //Gallery
+
+            // FAQs
+            'title' => 'required|string',
+            'content' => 'required',
         ];
     }
 }

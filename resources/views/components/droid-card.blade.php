@@ -1,7 +1,6 @@
 @foreach ($droidsList as $droid)
   <a href="{{ route('droids-show', $droid->id) }}" class="">
-    <div class="    max-w-sm rounded overflow-hidden shadow-lg hover:opacity-75 hover:duration-300">
-      {{-- <img class="w-full" src="https://clipground.com/images/r2d2-png-3.jpg" alt="Droid Image"> --}}
+    <div class="max-w-sm rounded overflow-hidden shadow-lg hover:opacity-75 hover:duration-300 droid-card">
       <img class="w-full" src="{{ $droid->image }}" alt="Droid Image">
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{ $droid->name }}</div>

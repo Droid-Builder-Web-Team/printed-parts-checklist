@@ -11,9 +11,16 @@ class DroidFaq extends Model
 
     protected $guarded = [];
 
+    protected $table = 'droid_faq';
+
     protected $fillable = [
         'droid_id',
-        'text',
+        'title',
         'content'
     ];
+
+    public function droid()
+    {
+        return $this->belongsToMany(Droid::class);
+    }
 }
