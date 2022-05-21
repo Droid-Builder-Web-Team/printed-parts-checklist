@@ -5131,6 +5131,7 @@ $("body").on("click", ".accordion .accordion-item .label", function () {
   }
 }); // Tabs
 
+var buttonRow = $(".tabs-wrapper .button-row").addClass("hidden");
 $(".tabs-wrapper .tab-content__tab-link").first().addClass("active");
 $(".tabs-wrapper .tab-content__tab-contents").first().attr("aria-hidden", "false").removeClass("hidden");
 $("body").on("click", ".tabs-wrapper .tab-content__tab-link", function () {
@@ -5138,7 +5139,11 @@ $("body").on("click", ".tabs-wrapper .tab-content__tab-link", function () {
   $(".tabs-wrapper .tab-content__tab-link").removeClass("active");
   $(".tabs-wrapper .tab-content__tab-contents").attr("aria-hidden", "true").removeClass("active").addClass("hidden");
   $(this).addClass("active");
-  $(".tabs-wrapper .tab-content__tab-contents[data-tab='".concat(activeContentAttr, "']")).attr("aria-hidden", "false").removeClass("hidden");
+  $(".tabs-wrapper .tab-content__tab-contents[data-tab='".concat(activeContentAttr, "']")).attr("aria-hidden", "false").removeClass("hidden"); // Check if the current tab == 5 (faq) then show add new FAQ button. Refactor Later - RH
+
+  if ($(this).hasClass && $(this).hasClass("active") && activeContentAttr == 5) {
+    buttonRow.removeClass("hidden");
+  }
 }); // FAQs Add New Button
 
 $("#newFaqButton").on("click", function (e) {

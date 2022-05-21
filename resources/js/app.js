@@ -66,6 +66,7 @@ $("body").on("click", ".accordion .accordion-item .label", function () {
 });
 
 // Tabs
+const buttonRow = $(".tabs-wrapper .button-row").addClass("hidden");
 $(".tabs-wrapper .tab-content__tab-link").first().addClass("active");
 $(".tabs-wrapper .tab-content__tab-contents")
     .first()
@@ -87,6 +88,15 @@ $("body").on("click", ".tabs-wrapper .tab-content__tab-link", function () {
     )
         .attr("aria-hidden", "false")
         .removeClass("hidden");
+
+    // Check if the current tab == 5 (faq) then show add new FAQ button. Refactor Later - RH
+    if (
+        $(this).hasClass &&
+        $(this).hasClass("active") &&
+        activeContentAttr == 5
+    ) {
+        buttonRow.removeClass("hidden");
+    }
 });
 
 // FAQs Add New Button

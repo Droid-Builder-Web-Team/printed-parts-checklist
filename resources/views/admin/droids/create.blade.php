@@ -46,7 +46,7 @@
               <li>
                 <button data-tab="5"
                   type="button"
-                  class="inline-block p-4 rounded-t-lg text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">FAQs</button>
+                  class="inline-block p-4 faqs rounded-t-lg text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500 tab-content__tab-link">FAQs</button>
               </li>
             </ul>
             <div class="tab-content__tab-items">
