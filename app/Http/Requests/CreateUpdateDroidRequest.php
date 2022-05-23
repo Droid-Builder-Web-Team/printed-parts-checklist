@@ -17,22 +17,23 @@ class CreateUpdateDroidRequest extends FormRequest
         return Auth::check();
     }
 
-    // /**
-    //  * Filters to be applied to the input.
-    //  *
-    //  * @return array
-    //  */
-    // public function filters()
-    // {
-    //     return [
-    //         'title' => 'trim|escape|capitalize',
-    //         'version' => 'trim|escape|capitalize',
-    //         'type' => 'required|string|trim|escape',
-    //         'description' => 'required|string|trim|escape',
-    //         'tags' => 'nullable|array|trim|escape',
-    //         'image' => 'required',
-    //     ];
-    // }
+    /**
+     * Filters to be applied to the input.
+     *
+     * @return array
+     */
+    public function filters()
+    {
+        return [
+            'title' => 'trim|escape|capitalize',
+            'version' => 'trim|escape|capitalize',
+            'type' => 'required|string|trim|escape',
+            'description' => 'required|string|trim|escape',
+            'tags' => 'nullable|array|trim|escape',
+            'droid_avatar' => 'required|image|mimes:jpg,jpeg,png,svg,gif,webp|max:2048',
+            'instructions_file' => 'required|mimes:pdf|max:2048',
+        ];
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -48,7 +49,7 @@ class CreateUpdateDroidRequest extends FormRequest
             'type' => 'required|string',
             'description' => 'required|string',
             'tags' => 'nullable|array',
-            'image' => 'nullable',
+            'droid_avatar' => 'required',
 
             // Instructions
             'instructions_title' => 'required|string',
