@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200 tabs-wrapper">
-          <form action="{{ route('admin-store-droid') }}" method="POST">
+          <form action="{{ route('admin-store-droid') }}" enctype="multipart/form-data" method="POST">
             @csrf
             @if ($errors->any())
               <div class="alert alert-danger">
@@ -122,7 +122,7 @@
                   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="instructions_file">Upload Instructions</label>
                   <input
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="instructions_file" type="file">
+                    id="instructions_file" name="instructions_file" type="file">
                 </div>
               </div>
 
@@ -137,7 +137,7 @@
                   <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="bill_of_materials_file">Upload Bill Of Materials</label>
                   <input
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    id="bill_of_materials_file" type="file">
+                    id="bill_of_materials_file" name="bill_of_materials_file" type="file">
                 </div>
               </div>
 

@@ -27,10 +27,15 @@
             <p class="text-sm text-dark-grey">Uploaded: {{ formatDateTime($singleDroid->created_at) }}</p>
             <p class="text-sm text-dark-grey">Last Update: {{ formatDateTime($singleDroid->updated_at) }}</p>
           </div>
+
+          <div class="downloads">
+            <a href="{{ asset($instructions->url) }}">Download Instructions</a>
+            <a href="{{ asset($bom->url) }}">Download Bill Of Materials</a>
+          </div>
         </div>
         <div class="gradient flex justify-end content-center">
           <div class="image-wrapper drop-shadow-xl">
-            <img src="{{ $singleDroid->image }}">
+            <img src="{{ asset($singleDroid->image) }}">
           </div>
         </div>
       </div>

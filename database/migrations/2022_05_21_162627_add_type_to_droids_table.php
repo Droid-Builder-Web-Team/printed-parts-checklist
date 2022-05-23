@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('droid_faq', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('droids_id');
-            $table->string('title');
-            $table->longText('content');
-            $table->timestamps();
-
-            $table->foreign('droids_id')->references('id')->on('droids');
+        Schema::table('droids', function (Blueprint $table) {
+            $table->string('type');
+            $table->string('tags')->nullable()->change();
         });
     }
 
@@ -31,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('droid_faq');
+        Schema::table('droids', function (Blueprint $table) {
+            $table->dropColumn('type');
+        });
     }
 };

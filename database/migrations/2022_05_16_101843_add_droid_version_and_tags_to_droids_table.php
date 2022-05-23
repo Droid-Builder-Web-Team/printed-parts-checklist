@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('droids', function (Blueprint $table) {
             $table->string('version')->after('name'); // MKI, MKII, MKIII etc - RH
-            $table->string('tags')->after('description'); // #oldrepublic, #clonewars, #empire, #firstorder etc = RH
+            $table->string('tags')->after('description')->nullable(); // #oldrepublic, #clonewars, #empire, #firstorder etc = RH
         });
     }
 

@@ -9,6 +9,8 @@ use App\Models\DroidGallery;
 use Illuminate\Http\Request;
 use App\Models\BillOfMaterial;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateUpdateDroidRequest;
 
 class DroidsController extends Controller
@@ -54,25 +56,51 @@ class DroidsController extends Controller
 
         // Creating Droid
         $droid = new Droid();
-        $droid->name = $validated->name;
-        $droid->version = $validated->version;
-        $droid->description = $validated->description;
-        $droid->type = $validated->type;
-        $droid->image = $validated->droid_avatar;
+        $droid->name = $validated['name'];
+        $droid->version = $validated['version'];
+        $droid->description = $validated['description'];
+        $droid->type = $validated['type'];
+
+        Storage::makeDirectory('public/droid-mainframe-images');
+
+        $image = $request->file('droid_avatar');
+
+        $fileName = uniqid();
+        $filePathTiny = "droid-mainframe-images/$fileName" . "_x376.webp";
+        $storagePathTiny = storage_path("app/public/$filePathTiny");
+
+        Image::make($image->getRealPath())
+            ->encode('webp', 40)
+            ->fit(376, 376)
+            ->save($storagePathTiny);
+
+        $droid->image = "storage/$filePathTiny";
         $droid->save();
 
         // Creating Instructions
         $instructions = new Instruction();
         $instructions->droids_id = $droid->id;
-        $instructions->title = $validated->instructions_title;
-        $instructions->title = $validated->instruction_file;
+        $instructions->title = $validated['instructions_title'];
+
+        Storage::makeDirectory('public/droid-instructions');
+
+        $fileName = time() . '_' . $request->file('instructions_file')->getClientOriginalName();
+        $filePath = $request->file('instructions_file')->storeAs('droid-instructions', $fileName, 'public');
+        $instructions->url = 'storage/' . $filePath;
+
         $instructions->save();
 
         // Creating Bill Of Materials
         $bom = new BillOfMaterial();
         $bom->droids_id = $droid->id;
-        $bom->title = $validated->bill_of_materials_title;
-        $bom->url = $validated->bill_of_materials_file;
+        $bom->title = $validated['bill_of_materials_title'];
+
+        Storage::makeDirectory('public/droid-bill-of-materials');
+
+        $fileName = time() . '_' . $request->file('bill_of_materials_file')->getClientOriginalName();
+        $filePath = $request->file('bill_of_materials_file')->storeAs('droid-bill-of-materials', $fileName, 'public');
+        $bom->url = 'storage/' . $filePath;
+
         $bom->save();
 
         // Create Gallery
@@ -83,9 +111,11 @@ class DroidsController extends Controller
 
         $faqs = new DroidFaq();
         $faqs->droids_id = $droid->id;
-        $faqs->title = $validated->title;
-        $faqs->content = $validated->content;
+        $faqs->title = $validated['title'];
+        $faqs->content = $validated['content'];
         $faqs->save();
+
+        return view('admin.droids.create')->with('status', 'Droid Added Successfully');
     }
 
     /**
@@ -97,10 +127,14 @@ class DroidsController extends Controller
     public function show(Droid $droid)
     {
         $singleDroid = Droid::where('id', $droid->id)->first();
-        $droidFaqs = DroidFaq::where('droid_id', $droid->id)->get();
+        $instructions = Instruction::where('droids_id', $singleDroid->id)->first();
+        $bom = BillOfMaterial::where('droids_id', $singleDroid->id)->first();
+        $droidFaqs = DroidFaq::where('droids_id', $droid->id)->get();
 
         return view('droids.show', [
             'singleDroid' => $singleDroid,
+            'instructions' => $instructions,
+            'bom' => $bom,
             'droidFaqs' => $droidFaqs,
         ]);
     }
