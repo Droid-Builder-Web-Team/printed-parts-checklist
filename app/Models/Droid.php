@@ -23,7 +23,8 @@ class Droid extends Model
         'type',
         'description',
         'tags',
-        'image'
+        'image',
+        'droid_gallery_id',
     ];
 
     protected $casts = [

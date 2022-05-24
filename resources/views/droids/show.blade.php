@@ -66,5 +66,20 @@
         @endforeach
       </div>
     </div>
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-2">
+      <div class="swiper droid-slider">
+        <div class="swiper-wrapper">
+          @foreach ($droidGallery as $gallery)
+            <div class="swiper-slide">
+              <img src="{{ asset($gallery->url) }}">
+            </div>
+          @endforeach
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
   </div>
 </x-app-layout>

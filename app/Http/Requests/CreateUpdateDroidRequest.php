@@ -32,6 +32,7 @@ class CreateUpdateDroidRequest extends FormRequest
             'tags' => 'nullable|array|trim|escape',
             'droid_avatar' => 'required|image|mimes:jpg,jpeg,png,svg,gif,webp|max:2048',
             'instructions_file' => 'required|mimes:pdf|max:2048',
+            'gallery_images[]' => 'nullable|image|mimes:jpg,jpeg,png,svg,gif,webp|max:2048',
         ];
     }
 
@@ -60,6 +61,7 @@ class CreateUpdateDroidRequest extends FormRequest
             'bill_of_materials_file' => 'required',
 
             //Gallery
+            'gallery_images[]' => 'nullable',
 
             // FAQs
             'title' => 'required|string',

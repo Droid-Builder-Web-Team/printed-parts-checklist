@@ -112,3 +112,18 @@
         }
     }
 }
+
+// Droid Slider
+.droid-slider {
+    .swiper-slide {
+        flex-shrink: unset;
+
+        img {
+            height: 470px;
+            width: auto;
+            max-width: unset;
+            object-fit: unset;
+            object-position: unset;
+        }
+    }
+}

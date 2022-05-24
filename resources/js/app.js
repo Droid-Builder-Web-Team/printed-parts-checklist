@@ -1,6 +1,8 @@
 require("./bootstrap");
 
 import Alpine from "alpinejs";
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
 
 window.Alpine = Alpine;
 
@@ -125,3 +127,24 @@ $("#newFaqButton").on("click", function (e) {
 
     $(".tab-content__tab-contents").append(templateRow);
 });
+
+// Droid Show Slider
+if (document.querySelectorAll(".droid-slider").length > 0) {
+    new Swiper("droid-slider", {
+        slidesPerView: 1,
+        spaceBetween: 40,
+        loop: true,
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 1,
+            },
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+}

@@ -104,10 +104,17 @@ class DroidsController extends Controller
         $bom->save();
 
         // Create Gallery
-        $gallery = new DroidGallery();
-        $gallery->droids_id = $droid->id;
-        // $gallery->url = $validated->
-        $gallery->save();
+        if ($request->has('gallery_images')) {
+            foreach ($request->file('gallery_images') as $galleryImage) {
+                $gallery = new DroidGallery();
+                $gallery->droids_id = $droid->id;
+
+                $imageName = $galleryImage->getClientOriginalName();
+                $filePath = $galleryImage->storeAs("droid-gallery/$droid->id", $imageName, 'public');
+                $gallery->url = 'storage/' . $filePath;
+                $gallery->save();
+            }
+        }
 
         $faqs = new DroidFaq();
         $faqs->droids_id = $droid->id;
@@ -129,12 +136,14 @@ class DroidsController extends Controller
         $singleDroid = Droid::where('id', $droid->id)->first();
         $instructions = Instruction::where('droids_id', $singleDroid->id)->first();
         $bom = BillOfMaterial::where('droids_id', $singleDroid->id)->first();
+        $droidGallery = DroidGallery::where('droids_id', $singleDroid->id)->get();
         $droidFaqs = DroidFaq::where('droids_id', $droid->id)->get();
 
         return view('droids.show', [
             'singleDroid' => $singleDroid,
             'instructions' => $instructions,
             'bom' => $bom,
+            'droidGallery' => $droidGallery,
             'droidFaqs' => $droidFaqs,
         ]);
     }
