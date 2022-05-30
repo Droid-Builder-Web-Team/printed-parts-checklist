@@ -82,7 +82,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'),
             ],
         ],
 
@@ -113,6 +113,13 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+        'discord' => [
+            'driver' => 'custom',
+            'via' => MarvinLabs\DiscordLogger\Logger::class,
+            'level' => 'debug',
+            'url' => env('LOG_DISCORD_WEBHOOK_URL'),
         ],
     ],
 

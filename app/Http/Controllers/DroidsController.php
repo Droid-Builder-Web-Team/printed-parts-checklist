@@ -122,7 +122,7 @@ class DroidsController extends Controller
         $faqs->content = $validated['content'];
         $faqs->save();
 
-        return view('admin.droids.create')->with('status', 'Droid Added Successfully');
+        return view('admin.droids.create');
     }
 
     /**
@@ -138,6 +138,8 @@ class DroidsController extends Controller
         $bom = BillOfMaterial::where('droids_id', $singleDroid->id)->first();
         $droidGallery = DroidGallery::where('droids_id', $singleDroid->id)->get();
         $droidFaqs = DroidFaq::where('droids_id', $droid->id)->get();
+
+        notify()->success($singleDroid->name . ' Successfully Created');
 
         return view('droids.show', [
             'singleDroid' => $singleDroid,

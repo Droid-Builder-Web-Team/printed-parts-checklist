@@ -130,10 +130,9 @@ $("#newFaqButton").on("click", function (e) {
 
 // Droid Show Slider
 if (document.querySelectorAll(".droid-slider").length > 0) {
-    new Swiper("droid-slider", {
+    new Swiper(".droid-slider", {
         slidesPerView: 1,
         spaceBetween: 40,
-        loop: true,
         breakpoints: {
             0: {
                 slidesPerView: 1,

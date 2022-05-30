@@ -13,6 +13,8 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/notify.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
   {{-- Bulma Styling CSS --}}
@@ -22,11 +24,8 @@
   {{-- Font Awesome 6.1.1 CSS --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -59,6 +58,17 @@
       {{ $slot }}
     </main>
   </div>
+
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  @notifyJs
+  <x:notify-messages />
+
+  {{-- Required to make notifications hide. - RH --}}
+  <script>
+    $(document).ready(function() {
+      $(".inset-0").delay(2500).fadeOut(300);
+    });
+  </script>
 </body>
 
 </html>

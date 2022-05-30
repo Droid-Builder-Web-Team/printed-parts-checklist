@@ -30,6 +30,78 @@
 }
 
 // Single Droid Page
+.droid-stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .active-build-wrapper {
+        text-align: center;
+
+        .active-builds {
+            position: relative;
+            height: 150px;
+            width: 150px;
+            background-color: black;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            text-align: center;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 84%;
+                width: 84%;
+                background-color: white;
+                border-radius: 50%;
+            }
+
+            .active-value-container {
+                position: relative;
+                font-size: 3rem;
+            }
+        }
+
+        span {
+            //
+        }
+    }
+
+    .completed-build-wrapper {
+        text-align: center;
+
+        .completed-builds {
+            position: relative;
+            height: 150px;
+            width: 150px;
+            background-color: black;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            text-align: center;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 84%;
+                width: 84%;
+                background-color: white;
+                border-radius: 50%;
+            }
+
+            .completed-value-container {
+                position: relative;
+                font-size: 3rem;
+            }
+        }
+
+        span {
+            //
+        }
+    }
+}
+
 .droid-info-hero-section {
     .gradient {
         .image-wrapper {
@@ -47,6 +119,15 @@
                 height: 100%;
                 width: 100%;
             }
+        }
+    }
+
+    .downloads a {
+        svg {
+            max-width: 30px;
+            max-height: 30px;
+            height: 100%;
+            width: 100%;
         }
     }
 }

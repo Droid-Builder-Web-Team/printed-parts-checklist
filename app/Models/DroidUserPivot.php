@@ -13,6 +13,8 @@ class DroidUserPivot extends Model
 
     protected $guarded = [];
 
+    protected $table = 'droid_user_pivot';
+
     protected $fillable = [
         'droids_id',
         'user_id'
@@ -20,7 +22,7 @@ class DroidUserPivot extends Model
 
     public function droids()
     {
-        return $this->belongsTo(Droid::class);
+        return $this->hasMany(Droid::class);
     }
 
     public function user()

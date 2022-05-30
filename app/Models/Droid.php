@@ -47,14 +47,6 @@ class Droid extends Model
         return $this->hasMany(Part::class);
     }
 
-    /**
-     * Get a count of the parts associated with the chosen droid - RH
-     */
-    public function getCountOfParts()
-    {
-        return Part::where('droids_id', $this->id)->count();
-    }
-
     public function instructions()
     {
         return $this->hasMany(Instruction::class);
@@ -73,5 +65,58 @@ class Droid extends Model
     public function droidGallery()
     {
         return $this->hasMany(DroidGallery::class);
+    }
+
+    public function droidUser()
+    {
+        return $this->belongsToMany(DroidUserPivot::class);
+    }
+
+    /**
+     * Get a count of the parts associated with the chosen droid - RH
+     */
+    public function getCountOfParts()
+    {
+        return Part::where('droids_id', $this->id)->count();
+    }
+
+    /**
+     * Get a count of active builds of this droid - RH
+     */
+
+    public function getCountOfActiveBuilds()
+    {
+        // return $activeBuilds = DroidUserPivot::where('completed', 0 && 'droids_id', $this->id)->count();
+        $activeBuilds = 25;
+        return $activeBuilds;
+    }
+
+    /**
+     * Get a count of complete builds of this droid - RH
+     */
+    public function getCountOfCompletedBuilds()
+    {
+        // return $activeBuilds = DroidUserPivot::where('completed', 1 && 'droids_id', $this->id)->count();
+        $completedBuilds = 75;
+        return $completedBuilds;
+    }
+
+    /**
+     * Get a count of completed builds of this droid - RH
+     */
+
+    public function getCountOfTotalBuilds()
+    {
+        // return $completedbuilds = DroidUserPivot::where('droids_id', $this->id)->count();
+        $totalBuilds = 100;
+        return $totalBuilds;
+    }
+
+    /**
+     * Get a total Droid User Count
+     */
+    public function getTotalDroidUserEntriesCount()
+    {
+        return DroidUserPivot::where('droids_id', $this->id)->count();
     }
 }

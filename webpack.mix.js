@@ -11,6 +11,7 @@ mix.disableNotifications();
 
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
+    .css("resources/css/notify.css", "public/css")
     .options({
         postCss: [tailwindcss("./tailwind.config.js")],
     })
