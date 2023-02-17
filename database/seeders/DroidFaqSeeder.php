@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use app\Models\DroidFaq;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DroidFaqSeeder extends Seeder
 {
@@ -16,7 +14,7 @@ class DroidFaqSeeder extends Seeder
     public function run()
     {
         $faq = [
-            'droid_id' => '1',
+            'droids_id' => '1',
             'title' => 'Question 1',
             'content' => '',
         ];

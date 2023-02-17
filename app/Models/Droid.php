@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Part;
-use App\Models\User;
-use App\Models\Instruction;
-use App\Models\DroidUserPivot;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Droid extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 

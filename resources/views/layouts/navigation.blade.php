@@ -20,7 +20,7 @@
           <x-nav-link :active="request()->routeIs('#')">
             {{ __('My Droids') }}
           </x-nav-link>
-          @role('admin')
+          @role('Admin')
             <x-nav-link :href="route('admin-dashboard')" :active="request()->routeIs('admin-dashboard')">
               {{ __('Admin Dashboard') }}
             </x-nav-link>

@@ -3,10 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Droid;
+use Yajra\DataTables\DataTableAbstract;
+use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class DroidDataTable extends DataTable
@@ -15,7 +15,7 @@ class DroidDataTable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
+     * @return DataTableAbstract
      */
     public function dataTable($query)
     {
@@ -31,14 +31,14 @@ class DroidDataTable extends DataTable
                 }
             )
             // Make the droid name clickable to view that droid - RH
-            ->editColumn('name', '<a href="#">{{$name}}</a>')
+            ->editColumn('name', '<a href="/droids/{{$id}}">{{$name}}</a>')
             ->rawColumns(['name', 'delete']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Droid $model
+     * @param Droid $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Droid $model)
@@ -49,7 +49,7 @@ class DroidDataTable extends DataTable
     /**
      * Optional method if you want to use html builder.
      *
-     * @return \Yajra\DataTables\Html\Builder
+     * @return Builder
      */
     public function html()
     {

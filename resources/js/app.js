@@ -14,7 +14,7 @@ $(".delete-confirm").on("click", function (event) {
     const url = $(this).attr("href");
     swal({
         title: "Are you sure?",
-        text: "This record and it`s details will be permanantly deleted!",
+        text: "This record and it`s details will be permanently deleted!",
         icon: "warning",
         buttons: ["Cancel", "Yes!"],
     }).then(function (value) {

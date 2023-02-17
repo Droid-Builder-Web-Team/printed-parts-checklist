@@ -14,7 +14,7 @@ class DroidFaq extends Model
     protected $table = 'droid_faq';
 
     protected $fillable = [
-        'droid_id',
+        'droids_id',
         'title',
         'content'
     ];

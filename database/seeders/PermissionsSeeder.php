@@ -18,10 +18,7 @@ class PermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        $superAdminRole = Role::create([
-            'name' => 'Super Admin',
-            'guard_name' => 'web',
-        ]);
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $adminRole = Role::create([
             'name' => 'Admin',
@@ -37,12 +34,12 @@ class PermissionsSeeder extends Seeder
         $viewAdminDashboard = Permission::create(['name' => 'view-admin-dashboard', 'guard_name' => 'web']);
 
         // Sync Permissions
-//        $adminRole->syncPermissions([
-//            $permissionVariable
-//        ]);
+        $adminRole->syncPermissions([
+            $viewAdminDashboard
+        ]);
 
         // Create Super Admin Role
-//        $user = User::findOrFail(1)->assignRole('Admin');
+        $user = User::find('1')->assignRole('Admin');
     }
 }
 
