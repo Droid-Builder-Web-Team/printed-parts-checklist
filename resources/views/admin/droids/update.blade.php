@@ -23,17 +23,32 @@
                         <h2>Droid Details</h2>
                         <div class="form-group mb-6">
                             <label>Droid Name</label>
-                            <input type="text" class="form-control" id="droid_name" name="droid_name">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="droid_name"
+                                name="droid_name"
+                                value="{{ old('droid_name', optional($droid)->name) }}"
+                            >
                         </div>
 
                         <div class="form-group mb-6">
                             <label>Droid Version</label>
-                            <input type="text" class="form-control" id="droid_version" name="droid_version">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="droid_version"
+                                name="droid_version"
+                                value="{{ old('droid_version', optional($droid)->version) }}"
+                            >
                         </div>
 
                         <div class="form-group mb-6">
                             <label>Droid Description</label>
-                            <textarea class="form-control" id="droid_description" name="droid_description"></textarea>
+                            <textarea
+                                class="form-control"
+                                id="droid_description"
+                                name="droid_description">{{ old('droid_description', optional($droid)->description) }}</textarea>
                         </div>
 
                         <div class="form-group mb-6">
@@ -43,15 +58,15 @@
 
                         <div class="form-group mb-6">
                             <label>Build Level</label>
-                            <select id="build_level" name="build_level" class="form-control block">
+                            <select
+                                id="build_level"
+                                name="build_level"
+                                class="form-control block"
+                            >
                                 <option disabled>Select The Build Level</option>
-                                <option value="full-droid">Full Droid</option>
-                                <option value="work-in-progress">Work In Progress</option>
-                                <option value="dome-only">Dome Only</option>
-                                <option value="body-only">Body Only</option>
-                                <option value="microdroid">Microdroid</option>
-                                <option value="minidroid">Minidroid</option>
-                                <option value="babydroid">Babydroid</option>
+                                @foreach($droid->types as $type)
+                                    <option value="{{$type->id}}">{{$type->type}}</option>
+                                @endforeach
                             </select>
                         </div>
 

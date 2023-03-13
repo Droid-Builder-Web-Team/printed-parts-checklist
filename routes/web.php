@@ -33,7 +33,7 @@ Route::middleware('role:Admin')->group(function () {
         Route::get('/droids', [AdminController::class, 'getDroidsDataTable'])->name('admin-droids');
 
         Route::prefix('droids')->group(function () {
-            Route::get('/create', [DroidsController::class, 'create'])->name('admin-create-droid');
+            Route::get('/update/{droid?}', [DroidsController::class, 'update'])->name('admin-create-droid');
             Route::post('/store', [DroidsController::class, 'createUpdateNewDroid'])->name('admin-store-droid');
         });
     });
