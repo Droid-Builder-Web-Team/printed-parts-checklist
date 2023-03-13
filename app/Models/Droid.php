@@ -69,6 +69,11 @@ class Droid extends Model
         return $this->belongsToMany(DroidUserPivot::class);
     }
 
+    public function types()
+    {
+        return $this->hasOne(DroidType::class);
+    }
+
     /**
      * Get a count of the parts associated with the chosen droid - RH
      */
