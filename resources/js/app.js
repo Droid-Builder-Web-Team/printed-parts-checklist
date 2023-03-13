@@ -3,6 +3,7 @@ require("./bootstrap");
 import Alpine from "alpinejs";
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
+import 'flowbite';
 
 window.Alpine = Alpine;
 
