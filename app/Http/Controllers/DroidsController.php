@@ -7,6 +7,7 @@ use App\Models\BillOfMaterial;
 use App\Models\Droid;
 use App\Models\DroidFaq;
 use App\Models\DroidGallery;
+use App\Models\DroidType;
 use App\Models\Instruction;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -77,8 +78,20 @@ class DroidsController extends Controller
      */
     public function update(Droid $droid = null)
     {
+        $droid = Droid::find($droid->id)->with('types')->first();
+        $types = DroidType::all();
+        $instructions = Instruction::where('droid_id', $droid->id)->first();
+        $bom = BillOfMaterial::where('droid_id', $droid->id)->first();
+        $gallery = DroidGallery::where('droid_id', $droid->id)->get();
+        $faq = DroidFaq::where('droid_id', $droid->id)->get();
+
         return view('admin.droids.update', [
             'droid' => $droid,
+            'types' => $types,
+            'instructions' => $instructions,
+            'bom' => $bom,
+            'gallery' => $gallery,
+            'faq' => $faq
         ]);
     }
 

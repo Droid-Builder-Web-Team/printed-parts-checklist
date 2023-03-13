@@ -46,22 +46,22 @@ class Droid extends Model
 
     public function instructions()
     {
-        return $this->hasMany(Instruction::class);
+        return $this->belongsTo(Instruction::class);
     }
 
     public function faqs()
     {
-        return $this->hasMany(DroidFaq::class);
+        return $this->belongsTo(DroidFaq::class);
     }
 
     public function billOfMaterials()
     {
-        return $this->hasMany(BillOfMaterial::class);
+        return $this->belongsTo(BillOfMaterial::class);
     }
 
     public function droidGallery()
     {
-        return $this->hasMany(DroidGallery::class);
+        return $this->belongsTo(DroidGallery::class);
     }
 
     public function droidUser()
@@ -71,7 +71,7 @@ class Droid extends Model
 
     public function types()
     {
-        return $this->hasOne(DroidType::class);
+        return $this->belongsTo(DroidType::class);
     }
 
     /**

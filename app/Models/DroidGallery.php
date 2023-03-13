@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class DroidGallery extends Model
 {
@@ -21,6 +21,6 @@ class DroidGallery extends Model
 
     public function droids()
     {
-        return $this->belongsToMany(Droid::class);
+        return $this->hasOne(Droid::class);
     }
 }

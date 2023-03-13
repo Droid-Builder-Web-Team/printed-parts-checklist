@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Droid;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Instruction extends Model
 {
@@ -22,6 +21,6 @@ class Instruction extends Model
 
     public function droids()
     {
-        return $this->belongsToMany(Droid::class);
+        return $this->hasOne(Droid::class, 'droid_id');
     }
 }

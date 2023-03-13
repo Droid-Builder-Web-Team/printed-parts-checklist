@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class DroidFaq extends Model
 {
@@ -14,13 +14,13 @@ class DroidFaq extends Model
     protected $table = 'droid_faq';
 
     protected $fillable = [
-        'droids_id',
+        'droid_id',
         'title',
         'content'
     ];
 
     public function droid()
     {
-        return $this->belongsToMany(Droid::class);
+        return $this->hasOne(Droid::class);
     }
 }

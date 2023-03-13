@@ -19,6 +19,6 @@ class DroidType extends Model
 
     public function droid()
     {
-        return $this->belongsTo(Droid::class);
+        return $this->hasOne(Droid::class);
     }
 }

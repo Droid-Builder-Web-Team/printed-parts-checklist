@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class BillOfMaterial extends Model
 {
@@ -14,13 +14,13 @@ class BillOfMaterial extends Model
     protected $table = 'droid_bom';
 
     protected $fillable = [
-        'droids_id',
+        'droid_id',
         'title',
         'url'
     ];
 
     public function droid()
     {
-        return $this->belongsTo(Droid::class);
+        return $this->hasOne(Droid::class);
     }
 }
