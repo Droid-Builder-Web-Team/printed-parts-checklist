@@ -11,7 +11,6 @@ use App\Models\Instruction;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class DroidsController extends Controller
@@ -33,16 +32,6 @@ class DroidsController extends Controller
         return view('mainframe', [
             'droidsList' => $droidsList
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function create()
-    {
-        return view('admin.droids.create');
     }
 
     /**
@@ -81,26 +70,16 @@ class DroidsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param int $id
-     * @return Response
+     * @param Droid|null $droid
+     * @return Application|Factory|View
      */
-    public function update(Request $request, $id)
+    public function update(Droid $droid = null)
     {
-        //
+        return view('admin.droids.update', [
+            'droid' => $droid,
+        ]);
     }
 
     /**

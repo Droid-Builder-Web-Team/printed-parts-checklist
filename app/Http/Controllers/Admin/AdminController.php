@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\DataTables\UserDataTable;
-use App\DataTables\DroidDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Droid;
 
 class AdminController extends Controller
 {
@@ -14,8 +13,11 @@ class AdminController extends Controller
         return $dataTable->render('admin.users.list');
     }
 
-    public function getDroidsDataTable(DroidDataTable $dataTable)
+    public function getDroidsDataTable()
     {
-        return $dataTable->render('admin.droids.list');
+        $droids = Droid::whereNull('deleted_at')->get();
+        return view('admin.droids.list', [
+            'droids' => $droids,
+        ]);
     }
 }
