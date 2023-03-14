@@ -67,7 +67,7 @@
                                     <option disabled value="null">Select The Build Level</option>
                                     @foreach($types as $type)
                                         <option @if($droid)
-                                                    {{$droid->type_id === $type['id'] ? 'selected' : ''}}
+                                                    {{$droid->type_id === $type->id ? 'selected' : ''}}
                                                 @endif
                                                 value="{{$type['id']}}">{{$type->type}}</option>
                                     @endforeach
@@ -78,7 +78,7 @@
                                 <label>Droid Image</label>
                                 <input class="block form-control" id="droid_avatar" name="droid_avatar" type="file">
 
-                                @if($droid->image)
+                                @if(optional($droid)->image)
                                     <div class="preview-wrapper">
                                         <h6>Current Image</h6>
 
@@ -135,7 +135,7 @@
                                        type="file">
                             </div>
 
-                            @if($gallery->count() > 0)
+                            @if($gallery)
                                 <div class="gallery-wrapper">
                                     @foreach($gallery as $image)
                                         <div class="image-wrapper">
@@ -147,13 +147,32 @@
                         </div>
                         <div class="form-row">
                             <h2>FAQs</h2>
-                            @foreach($faq as $q)
+                            @if($faq)
+                                @foreach($faq as $q)
+                                    <div class="form-group mb-6">
+                                        <label>FAQ Title</label>
+                                        <input class="block form-control" id="faq_title"
+                                               name="faq_title"
+                                               type="text"
+                                               value="{{old('faq_title', optional($q)->title)}}">
+                                    </div>
+
+
+                                    <div class="form-group mb-6">
+                                        <label>FAQ Content</label>
+                                        <input class="block form-control"
+                                               id="faq_content"
+                                               name="faq_content"
+                                               type="text"
+                                               value="{{old('faq_content', optional($q)->content)}}">
+                                    </div>
+                                @endforeach
+                            @else
                                 <div class="form-group mb-6">
                                     <label>FAQ Title</label>
                                     <input class="block form-control" id="faq_title"
                                            name="faq_title"
-                                           type="text"
-                                           value="{{old('faq_title', optional($q)->title)}}">
+                                           type="text">
                                 </div>
 
 
@@ -162,10 +181,9 @@
                                     <input class="block form-control"
                                            id="faq_content"
                                            name="faq_content"
-                                           type="text"
-                                           value="{{old('faq_content', optional($q)->content)}}">
+                                           type="text">
                                 </div>
-                            @endforeach
+                            @endif
                         </div>
                         <button type="submit">Submit</button>
                     </form>
@@ -173,4 +191,7 @@
             </div>
         </div>
     </div>
+    <script>
+        let tags = @json(optional($droid)->tags ?: [])
+    </script>
 </x-app-layout>

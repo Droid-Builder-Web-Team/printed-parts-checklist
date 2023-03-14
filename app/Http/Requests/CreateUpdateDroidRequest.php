@@ -8,7 +8,6 @@ use App\Models\DroidFaq;
 use App\Models\DroidGallery;
 use App\Models\Instruction;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CreateUpdateDroidRequest extends FormRequest
@@ -96,7 +95,7 @@ class CreateUpdateDroidRequest extends FormRequest
             'version' => 'version',
             'build_level' => 'type',
             'description' => 'description',
-            'tags' => 'tags',
+            'droid_tags' => 'tags',
             'droid_avatar' => 'droid avatar',
 
             // Instructions
@@ -117,7 +116,6 @@ class CreateUpdateDroidRequest extends FormRequest
     }
 
     /**
-     * @param Request $request
      * @param Droid|null $droid
      * @param Instruction|null $instruction
      * @param BillOfMaterial|null $bom
@@ -144,10 +142,12 @@ class CreateUpdateDroidRequest extends FormRequest
         $droid->name = strtoupper($this->input('droid_name'));
         $droid->version = $this->input('droid_version');
         $droid->description = $this->input('droid_description');
-        $droid->tags = 'Test Tag 1'; // Hardcoded for testing
+        $droid->tags = json_encode(explode(',', $this->input('droid_tags')));
         $droid->droid_gallery_id = null; // Hardcoded for testing
-        $droid->type = $this->input('build_level');
+        $droid->type_id = $this->input('build_level');
+
         $droid->save();
+        dd($droid);
 
         if ($this->hasFile('droid_avatar')) {
             $file = $this->file('droid_avatar');

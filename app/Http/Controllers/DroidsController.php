@@ -56,10 +56,10 @@ class DroidsController extends Controller
     public function show(Droid $droid)
     {
         $singleDroid = Droid::where('id', $droid->id)->first();
-        $instructions = Instruction::where('droids_id', $singleDroid->id)->first();
-        $bom = BillOfMaterial::where('droids_id', $singleDroid->id)->first();
-        $droidGallery = DroidGallery::where('droids_id', $singleDroid->id)->get();
-        $droidFaqs = DroidFaq::where('droids_id', $droid->id)->get();
+        $instructions = Instruction::where('droid_id', $singleDroid->id)->first();
+        $bom = BillOfMaterial::where('droid_id', $singleDroid->id)->first();
+        $droidGallery = DroidGallery::where('droid_id', $singleDroid->id)->get();
+        $droidFaqs = DroidFaq::where('droid_id', $droid->id)->get();
 
         return view('droids.show', [
             'singleDroid' => $singleDroid,
@@ -76,14 +76,30 @@ class DroidsController extends Controller
      * @param Droid|null $droid
      * @return Application|Factory|View
      */
-    public function update(Droid $droid = null)
+    public function viewCreateOrUpdateDroid(
+        Droid          $droid = null,
+        Instruction    $instructions = null,
+        BillOfMaterial $bom = null,
+        DroidGallery   $gallery = null,
+        DroidFaq       $faq = null
+    )
     {
-        $droid = Droid::find($droid->id)->with('types')->first();
         $types = DroidType::all();
-        $instructions = Instruction::where('droid_id', $droid->id)->first();
-        $bom = BillOfMaterial::where('droid_id', $droid->id)->first();
-        $gallery = DroidGallery::where('droid_id', $droid->id)->get();
-        $faq = DroidFaq::where('droid_id', $droid->id)->get();
+
+        if ($droid) {
+            $droidTags = [];
+            foreach ($droid->tags as $tag) {
+                $droidTags[] = $tag;
+            }
+            $droid->tags = collect($droidTags)->implode(', ');
+        }
+//        if ($droid) {
+//            $droid = Droid::find($droid->id)->with('types')->first();
+//            $instructions = Instruction::where('droid_id', $droid->id)->first();
+//            $bom = BillOfMaterial::where('droid_id', $droid->id)->first();
+//            $gallery = DroidGallery::where('droid_id', $droid->id)->get();
+//            $faq = DroidFaq::where('droid_id', $droid->id)->get();
+//        }
 
         return view('admin.droids.update', [
             'droid' => $droid,
