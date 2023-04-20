@@ -147,7 +147,6 @@ class CreateUpdateDroidRequest extends FormRequest
         $droid->type_id = $this->input('build_level');
 
         $droid->save();
-        dd($droid);
 
         if ($this->hasFile('droid_avatar')) {
             $file = $this->file('droid_avatar');
@@ -168,7 +167,7 @@ class CreateUpdateDroidRequest extends FormRequest
             $path = $file->store('public/droids/' . $droid->id . '/instructions');
         }
 
-        $instruction->droids_id = $droid->id;
+        $instruction->droid_id = $droid->id;
         $instruction->title = $this->input('instructions_title');
         $instruction->url = $path;
         $instruction->save();
@@ -185,7 +184,7 @@ class CreateUpdateDroidRequest extends FormRequest
             $path = $file->store('public/droids/' . $droid->id . '/bill_of_materials');
         }
 
-        $bom->droids_id = $droid->id;
+        $bom->droid_id = $droid->id;
         $bom->title = $this->input('bill_of_materials_title');
         $bom->url = $path;
         $bom->save();
@@ -198,7 +197,7 @@ class CreateUpdateDroidRequest extends FormRequest
         // Check the file, get the name and store
         if ($this->hasFile('gallery_images')) {
             foreach ($this->file('gallery_images') as $galleryImage) {
-                $gallery->droids_id = $droid->id;
+                $gallery->droid_id = $droid->id;
                 $file = $galleryImage->file('gallery_images');
                 $fileName = $file->getClientOriginalName();
                 $path = $file->store('public/droids/' . $droid->id . '/gallery');
@@ -212,7 +211,7 @@ class CreateUpdateDroidRequest extends FormRequest
             $faq = new DroidFaq;
         }
 
-        $faq->droids_id = $droid->id;
+        $faq->droid_id = $droid->id;
         $faq->title = $this->input('faq_title');
         $faq->content = $this->input('faq_content');
         $faq->save();
